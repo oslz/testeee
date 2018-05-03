@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
             .setTitle(`╒════⋙📁 Comandos 📁⋘════╕`, 'Caso queira saber um pouco sobre mim digite !info')
             .setColor(2490112)
             .setTimestamp(new Date())
-            .addField('**🔨 ADMINISTRATIVOS 🔨**', `!banir, !kickar, !limpar, !chaton, !chatoff, !defesa`)
+            .addField('**🔨 ADMINISTRATIVOS 🔨**', `!banir, !kickar, !limpar, !chat, !defesa`)
             .addField('**👓 DIVERSOS 👓**', '!cachorro, !gato, !thundercats, !gif, !perguntar !casal, !avatar ~~!tamanho~~')
             .addField('**♨ GERAL ♨**', '!memoria, !ping, !info, !nickname')
 
