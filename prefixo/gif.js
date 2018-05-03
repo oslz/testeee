@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
             
             gifUrl => message.channel.send({
                 "embed": {
-                    "title": `╒════⋙🌌 GIPHY 🌌⋘════╕`,
+                    "title": `» ${message.guild.name}`,
                     "color": 2490112,
                     "timestamp": new Date(),
                     "footer": {

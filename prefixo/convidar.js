@@ -2,7 +2,7 @@ exports.run = (client, message, args) => {
     message.channel.createInvite().then(a =>{
         message.channel.send({
             "embed": {
-                "title": `╒════⋙💎 CONVITE 💎⋘════╕`,
+                "title": `» ${message.guild.name}`,
                 "color": 2490112,
                 "timestamp": new Date(),
                 "footer": {

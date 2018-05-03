@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
     let cor = ping > 1000 ? "16711680" : "2490112"
    message.channel.send({
       "embed": {
-      "title": `╒════⋙📡 PING 📡⋘════╕`,
+      "title": `» ${message.guild.name}`,
       "color": cor,
       "timestamp": new Date(),
       "footer": {

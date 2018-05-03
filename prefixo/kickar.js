@@ -1,9 +1,11 @@
 exports.run = (client, message, args) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("**SEM PERMISSÃO** (~~ADMINISTRATOR~~)");
-    message.reply(`Olhe **DM** e siga as instruções`)
+    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("**SEM PERMISSÃO** (~~BAN_MEMBERS~~)");
+    let member = message.mentions.members.first();
+    if (member === null) return message.reply('Quem eu devo **KICKAR**? (mencione-o)');
+    message.reply('Confirme o kick em sua **DM**')
     message.author.send({
         "embed": {
-            "title": `**╒════⋙💬 CHAT 💬⋘════╕**`,
+            "title": `**╒════⋙🔰 KICK **${member.name}** 🔰⋘════╕**`,
             "color": 2490112,
             "timestamp": new Date(),
             "footer": {
@@ -12,12 +14,12 @@ exports.run = (client, message, args) => {
             },
             "fields": [
                 {
-                  "name": `❌ - Desliga o CHAT`,
-                  "value": `**Somente membros com permissão poderão falar**`
+                  "name": `❌ - Cancela a punição`,
+                  "value": `**-**`
                 },
                 {
-                  "name": `✔ - Liga o CHAT`,
-                  "value": `**Todos poderão escrever**`,
+                  "name": `✔ - Confirma a punição`,
+                  "value": `**-**`,
                   "inline": false
                 }
             
@@ -41,25 +43,18 @@ exports.run = (client, message, args) => {
             switch(r.emoji.name) {
   
             case '❌':
-            var da = message.guild.roles.find("name","@everyone")
-            message.channel.overwritePermissions(da, {
-                SEND_MESSAGES: false
-                
-              })
-              message.author.send('O chat foi desativado, caso queira ativar novamente clique no `✔` ')
-              message.channel.send('**Chat off!**');
+
+             message.author.send('Você quem manda! Membro **NAO** foi kickado ')
+             message.channel.send(`${member} você foi **perdoado**`);
                          
                             
                 
               break;
 
               case '✔':
-              var da = message.guild.roles.find("name","@everyone")
-              message.channel.overwritePermissions(da, {
-                  SEND_MESSAGES: true
-                  
-                })
-                message.channel.send('**Chat on!**');
+              member.kick();
+             message.author.send('Você quem manda! Membro foi kickado')
+             message.channel.send(`${member.user} foi **kickado**`);
               
         setTimeout(() => {
             help.delete();
@@ -71,5 +66,7 @@ exports.run = (client, message, args) => {
 
 })
     })
+
+
 
 }

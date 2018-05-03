@@ -3,7 +3,7 @@ const client = new Discord.Client();
 exports.run = (client, message, args) => {
     message.channel.send({
         "embed": {
-            "title": `╒════⋙😄 AVATAR 😄⋘════╕`,
+            "title": `» ${message.guild.name}`,
             "color": 2490112,
             "timestamp": new Date(),
             "footer": {

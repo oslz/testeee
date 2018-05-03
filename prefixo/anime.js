@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
         .then(url => {
                 message.channel.send({
                     "embed": {
-                        "title": `╒════⋙🎴 ANIME 🎴⋘════╕`,
+                        "title": `» ${message.guild.name}`,
                         "color": 2490112,
                         "timestamp": new Date(),
                         "footer": {

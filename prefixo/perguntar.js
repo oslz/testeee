@@ -8,7 +8,7 @@ exports.run = (client, message, args)  => {
 
         message.channel.send({
             "embed": {
-                "title": `╒════⋙💬 PERGUNTA 💬⋘════╕`,
+                "title": `» ${message.guild.name}`,
                 "color": 2490112,
                 "timestamp": new Date(),
                 "footer": {
@@ -17,11 +17,11 @@ exports.run = (client, message, args)  => {
                 },
                 "fields": [
                     {
-                      "name": `🔹 Pegunta 🔹`,
+                      "name": `Pegunta `,
                       "value": `${args}`
                     },
                     {
-                      "name": `🔸 Resposta 🔸`,
+                      "name": `Resposta`,
                       "value": `**${falas1[Math.floor(Math.random() * falas1.length - 1)]}**`,
                       "inline": true
             }

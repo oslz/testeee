@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
             .setTimestamp(new Date())
             message.channel.send({
                 "embed": {
-                    "title": `╒════⋙🐱 THUNDERCATS  🐱⋘════╕`,
+                    "title": `» ${message.guild.name}`,
                     "color": 2490112,
                     "timestamp": new Date(),
                     "footer": {

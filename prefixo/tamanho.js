@@ -16,7 +16,7 @@ exports.run = (client, message, args)  => {
     if (mentions === null) return message.reply("**Mencione alguem**");
         message.channel.send({
             "embed": {
-                "title": `╒════⋙🔞 TAMANHO 🔞⋘════╕`,
+                "title": `» ${message.guild.name}`,
                 "color": 2490112,
                 "timestamp": new Date(),
                 "footer": {
@@ -25,11 +25,11 @@ exports.run = (client, message, args)  => {
                 },
                 "fields": [
                     {
-                      "name": `🔹 O dono da cobra 🔹`,
+                      "name":  `O dono da cobra `,
                       "value": `**${mentions}**`
                     },
                     {
-                      "name": `🔸 Tamanho 🔸`,
+                      "name":  `Tamanho `,
                       "value": `${falas1[Math.floor(Math.random() * falas1.length - 1)]}`,
                       "inline": true
             }

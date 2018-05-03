@@ -7,13 +7,13 @@ exports.run = (client, message, args) => {
     randomPuppy("dog")
         .then(url => {
             embed = new Discord.RichEmbed()
-            .setTitle(`❄ ${message.guild.name} ❄ - Comando em BETA`)
+            .setTitle(`» ${message.guild.name}`)
             .setColor(2490112)
             .setImage(url)
             .setTimestamp(new Date())
             message.channel.send({
                 "embed": {
-                    "title": `╒════⋙🐶 CACHORRO 🐶⋘════╕`,
+                    "title": `» ${message.guild.name}`,
                     "color": 2490112,
                     "timestamp": new Date(),
                     "footer": {
