@@ -1,4 +1,8 @@
 exports.run = (client, message, args) => {
+    if(!message.guild.me.permissions.has('ADMINISTRATOR')) {
+        return message.channel.send("**Estou sem permissão, adicione-a ao meu cargo** (~~ADMINISTRATOR~~)") 
+      } else {
+
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("**SEM PERMISSÃO** (~~ADMINISTRATOR~~)");
     message.reply(`Olhe **DM** e siga as instruções`)
     message.author.send({
@@ -72,4 +76,5 @@ exports.run = (client, message, args) => {
 })
     })
 
+}
 }

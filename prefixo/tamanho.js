@@ -10,10 +10,15 @@ exports.run = (client, message, args)  => {
         "Porra irmão, grandão",
         "Grandissimo",
         "Poderoso",
-        "~~nem faz cocegas~~"
+        "~~nem faz cocegas~~",
+        "Vai se fuder rapa"
     ];
     var mentions = message.mentions.users.first();
-    if (mentions === null) return message.reply("**Mencione alguem**");
+    if (!mentions) {
+        return message.reply("**Mencione alguem**");
+    } else {
+
+    
         message.channel.send({
             "embed": {
                 "title": `» ${message.guild.name}`,
@@ -30,7 +35,7 @@ exports.run = (client, message, args)  => {
                     },
                     {
                       "name":  `Tamanho `,
-                      "value": `${falas1[Math.floor(Math.random() * falas1.length - 1)]}`,
+                      "value": `${falas1[Math.floor(Math.random() * falas1.length)]}`,
                       "inline": true
             }
         
@@ -38,4 +43,4 @@ exports.run = (client, message, args)  => {
         ]
     }
   })
-}
+}}

@@ -5,7 +5,7 @@ exports.run = (client, message, args)  => {
         "Não",
         "Sim"
     ];
-
+    let args1  = args.join(" ");
         message.channel.send({
             "embed": {
                 "title": `» ${message.guild.name}`,
@@ -18,11 +18,11 @@ exports.run = (client, message, args)  => {
                 "fields": [
                     {
                       "name": `Pegunta `,
-                      "value": `${args}`
+                      "value": `${args1}`
                     },
                     {
                       "name": `Resposta`,
-                      "value": `**${falas1[Math.floor(Math.random() * falas1.length - 1)]}**`,
+                      "value": `**${falas1[Math.floor(Math.random() * falas1.length)]}**`,
                       "inline": true
             }
         

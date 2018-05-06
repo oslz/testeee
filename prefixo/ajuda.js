@@ -17,10 +17,21 @@ exports.run = (client, message, args) => {
                   "value": `**Mostra os comandos do BOT**`
                 },
                 {
+                    "name": `📇 - Info sobre os comandos`,
+                    "value": `**Mostre as funções dos comandos**`,
+                    "inline": false
+                },
+                {
                   "name": `⭐ - Sobre mim`,
                   "value": `**Me conheça melhor**`,
                   "inline": false
+                },
+                {
+                  "name": `🔑 - Permissões necessarias`,
+                  "value": `**Com elas você terá acesso total aos comandos**`,
+                  "inline": false
                 }
+            
             
 
 ]
@@ -31,10 +42,16 @@ exports.run = (client, message, args) => {
             help.react('📁');
         }, 500);
         setTimeout(() => {
-            help.react('⭐');
+            help.react('📇');
         }, 600);
-  
-        const collector = help.createReactionCollector((r, u) => (r.emoji.name === '📁' || r.emoji.name === '⭐') && u.id !== client.user.id);
+        setTimeout(() => {
+            help.react('⭐');
+        }, 700);
+        setTimeout(() => {
+            help.react('🔑');
+        }, 800);
+
+        const collector = help.createReactionCollector((r, u) => (r.emoji.name === '📁' || r.emoji.name === `🔑` || r.emoji.name === '📇' || r.emoji.name === '⭐') && u.id !== client.user.id);
   
         collector.on('collect', r => {
             switch(r.emoji.name) {
@@ -45,7 +62,7 @@ exports.run = (client, message, args) => {
             .setColor(2490112)
             .setTimestamp(new Date())
             .addField('**🔨 ADMINISTRATIVOS 🔨**', `!banir, !kickar, !limpar, !chat, !defesa, !anunciar`)
-            .addField('**👓 DIVERSOS 👓**', '!cachorro, !gato, !anime, !thundercats, !gif, !perguntar !casal, !avatar ~~!tamanho~~')
+            .addField('**👓 DIVERSOS 👓**', '!cachorro, !gato, !anime, !thundercats, !gif, !perguntar !casal, !invertido, !avatar ~~!tamanho~~')
             .addField('**♨ GERAL ♨**', '!memoria, !ping, !info, !nickname, !avatar, !convidar')
 
             message.author.send(embed);
@@ -55,8 +72,80 @@ exports.run = (client, message, args) => {
               break;
 
               case '⭐':
-              message.author.send('Olá, sou **Felix** um cara legal, bacana e não conta para nínguem, mas dizem que eu sou muito cheiroso e transmito **FELIXIDADE**! Tento trazer a diversão da galera com alguns comandos úteis ~~mas tem uns inuteis ai kk~~');
-  
+              
+              const os = require('os');
+              const arch = os.arch()
+              const used = process.memoryUsage().heapUsed / 1024 / 1024;
+          
+              let totalSeconds = process.uptime();
+              let realTotalSecs = Math.floor(totalSeconds % 60);
+              let days = Math.floor((totalSeconds % 31536000) / 86400);
+              let hours = Math.floor((totalSeconds / 3600) % 24);
+              let mins = Math.floor((totalSeconds / 60) % 60);
+          
+              var ping = client.ping
+              embed2 = new Discord.RichEmbed()
+              .setTitle(`╒════⋙⭐ Sobre mim ⭐⋘════╕`, 'Caso queira saber um pouco sobre mim digite !info')
+              .setColor(2490112)
+              .setTimestamp(new Date())
+              .addField('**⚽ Nome: **', `Felix, mais conhecido como **CONSTRUTOR!**`)
+              .addField('**🌍 Origem: **', ':flag_br: Brasil')
+              .addField('**📏 Quanto estou medindo de altura em MB: **', ` ${Math.round(used * 100) / 100}`)
+              .addField('**📡 Minha conexão atual é de: **', ` ${ping}`)
+              .addField('**🕜 Estou online faz: **', ` ${days} dias, ${hours} horas, ${mins} minutos e ${realTotalSecs} segundos`)
+              .addField('**🌟 Guilds **', ` ${client.guilds.size}`)
+              .addField('**✨ Usuarios **', ` ${client.users.size}`)
+                message.author.send(embed2) 
+                
+                break; 
+
+                case '📇':
+                embed3 = new Discord.RichEmbed()
+                .setTitle(`» ${message.guild.name}`, 'Caso queira saber um pouco sobre mim digite !info')
+                .setColor(2490112)
+                .setTimestamp(new Date())
+                .addField('**🔨 ADMINISTRATIVOS 🔨**', `!banir, !kickar, !limpar, !chat, !chaton, !chatoff`)
+                .addField('!kickar','Expulsa da guild o membro mencionado')
+                .addField('!banir','Expulsa permanentemente da guild o membro mencionado')
+                .addField('!limpar', 'Limpa uma quantidade de mensagens')
+                .addField('!chat', "Ativa ou Desativa o chat onde o comando foi escrito")
+                .addField('!chaton', "Ativa o chat onde o comando foi escrito")
+                .addField('!chatoff', "Desativa o chat onde o comando foi escrito")
+                .addBlankField(true)
+                .addField('**👓 DIVERSOS 👓**', '!cachorro, !gato, !gif, !perguntar !casal, !invertido,  ~~!tamanho~~')
+                .addField('!cachorro', 'Mostra uma foto de um cachorro')
+                .addField('!gato', 'Mostra uma foto de um gato')
+                .addField('!gif', 'Mostra um gif de algo que você queira')
+                .addField('!perguntar', "Responde suas dúvidas")
+                .addField('!casal', "Mostra a chance do casal mencionado")
+                .addField(`!invertido`, `Coloca a frase de trás pra frente`)
+                .addField('!tamanho', 'Mostra o tamanho da rolinha do queridao')
+                .addBlankField(true)
+                .addField('**♨ GERAL ♨**', '!memoria, !ping, !info, !nickname')
+                .addField('!memoria', "Mostra quanto estou pesando em MB")
+                .addField('!ping', "Mostra a minha conexão atual em MS")
+                .addField('!info', "Acho que você já sabe")
+                .addField('!nickname', "Altere seu APELIDO na guild")
+                message.author.send(embed3)
+            
+                break;
+
+                case '🔑':
+
+            
+                embed4 = new Discord.RichEmbed()
+                .setTitle(`» ${message.guild.name}`, 'Caso queira saber um pouco sobre mim digite !info')
+                .setColor(2490112)
+                .setTimestamp(new Date())
+                .addField('**🔨 MANAGE_MESSAGES **', `!anunciar`)
+                .addField('**🔨 BAN_MEMBERS **', `!banir`)
+                .addField('**🔨 KICK_MEMBERS **', `!kickar`)
+                .addField('**🔨 MANAGE_GUILD **', `!defesa`)
+                .addField('**🔨 ADMINISTRATOR **', `!chat, !chatoff, !chaton`)
+                message.author.send(embed4)
+                
+                
+
         setTimeout(() => {
             help.delete();
         }, 1 * 60 * 1000);

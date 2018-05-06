@@ -1,7 +1,10 @@
 exports.run = (client, message, args) => {
-    message.channel.createInvite().then(a =>{
+    if(!message.guild.me.permissions.has('CREATE_INSTANT_INVITE')) {
+    return message.channel.send(`**Estou sem permissão, adicione-a ao meu cargo** (~~CREATE_INSTANT_INVITE~~)`);
+} else {
+    message.channel.createInvite ().then(a =>{
         message.channel.send({
-            "embed": {
+            "embed": { 
                 "title": `» ${message.guild.name}`,
                 "color": 2490112,
                 "timestamp": new Date(),
@@ -19,7 +22,7 @@ exports.run = (client, message, args) => {
             })
         })
     }
-        
+}
         
     
     
